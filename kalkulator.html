@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator Nilai Sederhana</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+
+        .lulus {
+            color: green;
+            font-weight: bold;
+        }
+
+        .gagal {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Hitung Nilai Mahasiswa</h2>
+
+    <label>Nama Mahasiswa:</label><br>
+    <input type="text" id="nama" placeholder="Contoh: Budi"><br><br>
+
+    <label>Nilai (pisahkan dengan koma):</label><br>
+    <input type="text" id="nilai" placeholder="Contoh: 80, 90, 75"><br><br>
+
+    <button onclick="tambahData()">Hitung & Tambahkan</button>
+
+    <h3>Hasil Rekapitulasi</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Rata-Rata</th>
+                <th>Predikat</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tabelHasil"></tbody>
+    </table>
+
+    <script>
+        function tambahData() {
+            const nama = document.getElementById('nama').value.trim();
+            const inputNilai = document.getElementById('nilai').value.trim();
+
+            if (nama === "" || inputNilai === "") {
+                alert("Nama dan Nilai tidak boleh kosong!");
+                return;
+            }
+
+            // Ubah string nilai pisah koma jadi array angka
+            const arrayNilai = inputNilai.split(',').map(n => parseFloat(n.trim()));
+
+            if (arrayNilai.some(isNaN)) {
+                alert("Input nilai harus berupa angka yang dipisahkan koma!");
+                return;
+            }
+
+            // Hitung Rata-Rata
+            const total = arrayNilai.reduce((a, b) => a + b, 0);
+            const rataRata = (total / arrayNilai.length).toFixed(2);
+
+            // Tentukan Predikat
+            let predikat = 'E';
+            if (rataRata >= 85) predikat = 'A';
+            else if (rataRata >= 75) predikat = 'B';
+            else if (rataRata >= 65) predikat = 'C';
+            else if (rataRata >= 50) predikat = 'D';
+
+            // Tentukan Status (Lulus jika C/rata-rata >= 65)
+            const isLulus = rataRata >= 65;
+            const statusText = isLulus ? "LULUS" : "TIDAK LULUS";
+            const statusClass = isLulus ? "lulus" : "gagal";
+
+            // Tampilkan di Tabel
+            const tbody = document.getElementById('tabelHasil');
+            tbody.innerHTML += `
+                <tr>
+                    <td>${nama}</td>
+                    <td>${rataRata}</td>
+                    <td><b>${predikat}</b></td>
+                    <td class="${statusClass}">${statusText}</td>
+                </tr>
+            `;
+
+            // Reset Input
+            document.getElementById('nama').value = '';
+            document.getElementById('nilai').value = '';
+        }
+    </script>
+</body>
+
+</html>

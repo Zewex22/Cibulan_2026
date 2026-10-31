@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulir pemesanan paket wisata Desa Wisata Cibulan.">
+    <title>Formulir Paket Wisata | Cibulan</title>
+    <link rel="stylesheet" href="/css/paket.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">✦</span>
+            <span class="logo-text">
+                <strong>CIBULAN</strong>
+                <small>DESA WISATA</small>
+            </span>
+        </a>
+
+        <nav class="navigation">
+            <a href="index.html">Beranda</a>
+            <a href="index.html#destinasi">Destinasi</a>
+            <a href="paket.html" class="active">Paket Wisata</a>
+            <a href="index.html#informasi">Informasi</a>
+            <a href="index.html#kontak" class="nav-button">Kontak Pengelola</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="breadcrumb">
+                    <a href="index.html">Beranda</a> /
+                    <span>Paket Wisata</span> /
+                    <span>Formulir Permintaan</span>
+                </div>
+
+                <span class="eyebrow">RENCANAKAN PERJALANAN ANDA</span>
+
+                <h1>Pesan Paket Wisata<br>Desa Wisata Cibulan</h1>
+
+                <p>
+                    Isi formulir untuk menyampaikan rencana kunjungan.
+                    Pengelola dapat menghubungi Anda untuk mengonfirmasi
+                    jadwal, ketersediaan layanan, dan biaya resmi.
+                </p>
+
+                <div class="hero-features">
+                    <span>✓ Formulir mudah diisi</span>
+                    <span>✓ Pilihan paket fleksibel</span>
+                    <span>✓ Konfirmasi pengelola</span>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85"
+                    alt="Pemandangan alam untuk wisata">
+            </div>
+        </section>
+
+        <!-- FORM AREA -->
+        <section class="form-section">
+
+            <div class="form-layout">
+
+                <!-- FORM UTAMA -->
+                <form class="booking-form" action="#" method="post">
+
+                    <div class="form-heading">
+                        <h2>Formulir Paket Wisata</h2>
+                        <p>
+                            Kolom bertanda <span class="required">*</span>
+                            wajib diisi. Data ini merupakan contoh formulir
+                            frontend dan belum dikirim ke server.
+                        </p>
+                    </div>
+
+                    <!-- BAGIAN 01 -->
+                    <div class="form-group">
+                        <div class="section-title">
+                            <span class="number">01</span>
+                            <div>
+                                <h3>Informasi pemesan</h3>
+                                <p>Masukkan data kontak yang dapat dihubungi.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="nama">Nama lengkap <span class="required">*</span></label>
+                                <input type="text" id="nama" name="nama" placeholder="Nama sesuai identitas" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="email">Alamat email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="telepon">Nomor telepon / WhatsApp <span class="required">*</span></label>
+                                <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required>
+                                <small>Gunakan nomor yang aktif.</small>
+                            </div>
+
+                            <div class="field">
+                                <label for="instansi">Instansi / komunitas</label>
+                                <input type="text" id="instansi" name="instansi" placeholder="Opsional">
+                            </div>
+
+                            <div class="field">
+                                <label for="jenis">Jenis pemesan</label>
+                                <select id="jenis" name="jenis">
+                                    <option value="">Pilih jenis pemesan</option>
+                                    <option>Perorangan</option>
+                                    <option>Keluarga</option>
+                                    <option>Sekolah / kampus</option>
+                                    <option>Komunitas</option>
+                                    <option>Perusahaan / instansi</option>
+                                    <option>Agen perjalanan</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="kota">Kota asal</label>
+                                <input type="text" id="kota" name="kota" placeholder="Contoh: Cirebon">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 02 -->
+                    <div class="form-group">
+                        <div class="section-title">
+                            <span class="number">02</span>
+                            <div>
+                                <h3>Pilih paket wisata</h3>
+                                <p>Pilih paket dan jenis pengalaman yang diinginkan.</p>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Jenis paket <span class="required">*</span></label>
+
+                            <div class="package-options">
+                                <label class="package-option">
+                                    <input type="radio" name="paket" value="Wisata Singkat" required>
+                                    <span class="radio-circle"></span>
+                                    <strong>Wisata Singkat</strong>
+                                    <small>Kunjungan beberapa jam</small>
+                                </label>
+
+                                <label class="package-option">
+                                    <input type="radio" name="paket" value="Wisata Sehari">
+                                    <span class="radio-circle"></span>
+                                    <strong>Wisata Sehari</strong>
+                                    <small>Rencana aktivitas satu hari</small>
+                                </label>
+
+                                <label class="package-option">
+                                    <input type="radio" name="paket" value="Edukasi / Rombongan">
+                                    <span class="radio-circle"></span>
+                                    <strong>Edukasi / Rombongan</strong>
+                                    <small>Sekolah, komunitas, atau instansi</small>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="destinasi">Destinasi / aktivitas utama</label>
+                                <select id="destinasi" name="destinasi">
+                                    <option value="">Pilih destinasi atau aktivitas</option>
+                                    <option>Wisata Alam</option>
+                                    <option>Wisata Budaya</option>
+                                    <option>Wisata Air</option>
+                                    <option>Panorama Alam</option>
+                                    <option>Wisata Edukasi</option>
+                                    <option>Kunjungan UMKM Lokal</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="peserta">Jumlah peserta <span class="required">*</span></label>
+                                <input type="number" id="peserta" name="peserta" min="1" value="2" required>
+                                <small>Masukkan perkiraan jumlah orang.</small>
+                            </div>
+
+                            <div class="field">
+                                <label for="tanggal">Tanggal kunjungan <span class="required">*</span></label>
+                                <input type="date" id="tanggal" name="tanggal" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="waktu">Perkiraan waktu tiba</label>
+                                <input type="time" id="waktu" name="waktu">
+                            </div>
+
+                            <div class="field">
+                                <label for="alternatif">Tanggal alternatif</label>
+                                <input type="date" id="alternatif" name="alternatif">
+                            </div>
+
+                            <div class="field">
+                                <label for="durasi">Durasi kunjungan</label>
+                                <select id="durasi" name="durasi">
+                                    <option>Beberapa jam</option>
+                                    <option>1 hari</option>
+                                    <option>2 hari</option>
+                                    <option>Lebih dari 2 hari</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 03 -->
+                    <div class="form-group">
+                        <div class="section-title">
+                            <span class="number">03</span>
+                            <div>
+                                <h3>Kebutuhan dan preferensi</h3>
+                                <p>Sesuaikan kebutuhan perjalanan Anda.</p>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Layanan yang dibutuhkan</label>
+
+                            <div class="checkbox-options">
+                                <label><input type="checkbox" name="layanan[]" value="Pemandu wisata"> Pemandu
+                                    wisata</label>
+                                <label><input type="checkbox" name="layanan[]" value="Kegiatan edukasi"> Kegiatan
+                                    edukasi</label>
+                                <label><input type="checkbox" name="layanan[]" value="Konsumsi"> Konsumsi</label>
+                                <label><input type="checkbox" name="layanan[]" value="Dokumentasi"> Dokumentasi</label>
+                                <label><input type="checkbox" name="layanan[]" value="Transportasi lokal"> Transportasi
+                                    lokal</label>
+                                <label><input type="checkbox" name="layanan[]" value="Kunjungan UMKM"> Kunjungan
+                                    UMKM</label>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="transportasi">Transportasi yang digunakan</label>
+                                <select id="transportasi" name="transportasi">
+                                    <option value="">Pilih transportasi</option>
+                                    <option>Kendaraan pribadi</option>
+                                    <option>Bus pariwisata</option>
+                                    <option>Minibus</option>
+                                    <option>Sepeda motor</option>
+                                    <option>Transportasi umum</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="anggaran">Perkiraan anggaran per orang</label>
+                                <select id="anggaran" name="anggaran">
+                                    <option value="">Pilih rentang anggaran</option>
+                                    <option>Di bawah Rp50.000</option>
+                                    <option>Rp50.000 - Rp100.000</option>
+                                    <option>Rp100.000 - Rp200.000</option>
+                                    <option>Rp200.000 - Rp500.000</option>
+                                    <option>Di atas Rp500.000</option>
+                                </select>
+                            </div>
+
+                            <div class="field full-width">
+                                <label for="aktivitas">Preferensi aktivitas: santai hingga aktif</label>
+                                <div class="range-labels">
+                                    <span>Santai</span>
+                                    <strong>3 / 5</strong>
+                                    <span>Aktif</span>
+                                </div>
+                                <input type="range" id="aktivitas" name="aktivitas" min="1" max="5" value="3">
+                                <small>Geser untuk menunjukkan intensitas kegiatan yang disukai.</small>
+                            </div>
+
+                            <div class="field">
+                                <label for="warna">Warna pilihan untuk kebutuhan kelompok (opsional)</label>
+                                <input type="color" id="warna" name="warna" value="#087eb7">
+                                <small>Contoh input warna untuk preferensi identitas kelompok.</small>
+                            </div>
+
+                            <div class="field">
+                                <label for="bahasa">Bahasa layanan yang diharapkan</label>
+                                <select id="bahasa" name="bahasa">
+                                    <option>Bahasa Indonesia</option>
+                                    <option>Bahasa Inggris</option>
+                                    <option>Lainnya / diskusi</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 04 -->
+                    <div class="form-group">
+                        <div class="section-title">
+                            <span class="number">04</span>
+                            <div>
+                                <h3>Informasi tambahan</h3>
+                                <p>Berikan detail agar pengelola dapat mempersiapkan kunjungan.</p>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="catatan">Kebutuhan khusus / catatan</label>
+                            <textarea id="catatan" name="catatan" rows="5"
+                                placeholder="Contoh: kebutuhan aksesibilitas, peserta anak-anak, agenda khusus, atau permintaan lainnya."></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label for="lampiran">Lampiran (opsional)</label>
+                            <input type="file" id="lampiran" name="lampiran">
+                            <small>Contoh: surat kunjungan atau rundown kegiatan. Batas ukuran file ditentukan saat
+                                integrasi server.</small>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="sumber">Bagaimana Anda mengetahui Cibulan?</label>
+                                <select id="sumber" name="sumber">
+                                    <option value="">Pilih sumber informasi</option>
+                                    <option>Media sosial</option>
+                                    <option>Mesin pencari / internet</option>
+                                    <option>Teman atau keluarga</option>
+                                    <option>Sekolah / instansi</option>
+                                    <option>Pameran atau acara wisata</option>
+                                    <option>Lainnya</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="referensi">Kode referensi / nomor surat (opsional)</label>
+                                <input type="text" id="referensi" name="referensi" placeholder="Masukkan jika ada">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 05 -->
+                    <div class="form-group">
+                        <div class="section-title">
+                            <span class="number">05</span>
+                            <div>
+                                <h3>Persetujuan dan konfirmasi</h3>
+                                <p>Periksa kembali sebelum mengirim permintaan.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="kontak">Cara dihubungi</label>
+                                <select id="kontak" name="kontak">
+                                    <option>WhatsApp</option>
+                                    <option>Telepon</option>
+                                    <option>Email</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="promo">Kode promo (jika ada)</label>
+                                <input type="text" id="promo" name="promo" placeholder="Contoh: CIBULAN2026">
+                            </div>
+                        </div>
+
+                        <div class="consent">
+                            <label>
+                                <input type="checkbox" name="persetujuan" required>
+                                Saya menyetujui data ini digunakan untuk menindaklanjuti permintaan kunjungan.
+                                <span class="required">*</span>
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="promosi">
+                                Saya bersedia menerima informasi agenda atau promosi wisata berikutnya.
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">
+                                Kirim Permintaan Wisata ›
+                            </button>
+
+                            <button type="reset" class="btn-secondary">
+                                Kosongkan Formulir
+                            </button>
+
+                            <button type="button" class="btn-blue" onclick="window.print()">
+                                Pratinjau / Cetak
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!-- SIDEBAR -->
+                <aside class="sidebar">
+
+                    <div class="sidebar-card">
+                        <h3>Pilihan paket</h3>
+
+                        <div class="package-preview">
+                            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=200&q=80"
+                                alt="Wisata singkat">
+                            <div>
+                                <strong>Wisata Singkat</strong>
+                                <p>Untuk kunjungan singkat</p>
+                            </div>
+                        </div>
+
+                        <div class="package-preview">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=200&q=80"
+                                alt="Wisata sehari">
+                            <div>
+                                <strong>Wisata Sehari</strong>
+                                <p>Jelajah lebih fleksibel</p>
+                            </div>
+                        </div>
+
+                        <div class="package-preview">
+                            <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=200&q=80"
+                                alt="Wisata rombongan">
+                            <div>
+                                <strong>Edukasi / Rombongan</strong>
+                                <p>Sekolah dan komunitas</p>
+                            </div>
+                        </div>
+
+                        <small>Harga final dikonfirmasi oleh pengelola berdasarkan layanan dan jumlah peserta.</small>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Informasi penting</h3>
+
+                        <ul class="info-list">
+                            <li>Formulir ini belum terhubung ke database.</li>
+                            <li>Jadwal dianggap tentatif sampai dikonfirmasi.</li>
+                            <li>Harga dan fasilitas mengikuti informasi resmi.</li>
+                            <li>Siapkan kontak aktif untuk tindak lanjut.</li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Ringkasan permintaan</h3>
+
+                        <div class="summary-box">
+                            <strong>Detail pilihan Anda</strong>
+
+                            <div class="summary-row">
+                                <span>Paket</span>
+                                <strong>Belum dipilih</strong>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Peserta</span>
+                                <strong>2 orang</strong>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Tanggal</span>
+                                <strong>Belum dipilih</strong>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Anggaran</span>
+                                <strong>Belum dipilih</strong>
+                            </div>
+                        </div>
+
+                        <small>Ringkasan ini merupakan tampilan awal. Integrasi JavaScript dapat ditambahkan untuk
+                            memperbarui data otomatis.</small>
+                    </div>
+
+                    <div class="sidebar-card help-card">
+                        <h3>Butuh bantuan?</h3>
+                        <p>
+                            Hubungi pengelola Desa Wisata Cibulan untuk
+                            pertanyaan paket, akses, dan ketersediaan layanan.
+                        </p>
+
+                        <p><strong>WhatsApp:</strong> [Nomor resmi pengelola]</p>
+                        <p><strong>Email:</strong> [Email resmi pengelola]</p>
+
+                        <div class="notice">
+                            Ganti informasi dalam tanda kurung siku dengan
+                            kontak resmi sebelum website dipublikasikan.
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <span>© 2026 Sistem Informasi Desa Wisata Cibulan</span>
+        <span>Halaman paket wisata · HTML + CSS</span>
+    </footer>
+
+</body>
+
+</html>

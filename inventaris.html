@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikasi Inventaris Gudang</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        button.btn-danger {
+            background: #dc3545;
+        }
+
+        button.btn-edit {
+            background: #ffc107;
+            color: black;
+        }
+
+        .status-ada {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status-habis {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Aplikasi Inventaris Gudang</h2>
+
+    <div class="container">
+        <!-- Form Olah Data Barang -->
+        <div class="card">
+            <h3 id="formTitle">Tambah / Edit Barang</h3>
+            <input type="hidden" id="editIndex" value="-1">
+
+            <label>Nama Barang:</label>
+            <input type="text" id="namaBarang" placeholder="Contoh: Laptop Asus">
+
+            <label>Jumlah Stok:</label>
+            <input type="number" id="jumlahBarang" min="0" placeholder="0">
+
+            <button onclick="simpanBarang()" id="btnSimpan">Simpan Barang</button>
+            <button onclick="resetForm()" class="btn-danger" style="display:none;" id="btnBatal">Batal Edit</button>
+        </div>
+
+        <!-- Form Transaksi Mutasi (Masuk/Keluar) -->
+        <div class="card">
+            <h3>Mutasi Stok (Masuk / Keluar)</h3>
+            <label>Pilih Barang:</label>
+            <select id="selectBarang"></select>
+
+            <label>Jenis Transaksi:</label>
+            <select id="jenisMutasi">
+                <option value="masuk">Masuk Gudang (+)</option>
+                <option value="keluar">Keluar Gudang (-)</option>
+            </select>
+
+            <label>Jumlah Mutasi:</label>
+            <input type="number" id="jumlahMutasi" min="1" placeholder="1">
+
+            <button onclick="prosesMutasi()">Proses Mutasi</button>
+        </div>
+    </div>
+
+    <!-- Tabel Master Barang -->
+    <h3>Daftar Barang</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Barang</th>
+                <th>Jumlah</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="tabelBarang"></tbody>
+    </table>
+
+    <!-- Tabel Riwayat Mutasi -->
+    <h3>Riwayat Barang Masuk / Keluar</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Waktu</th>
+                <th>Nama Barang</th>
+                <th>Tipe</th>
+                <th>Jumlah</th>
+            </tr>
+        </thead>
+        <tbody id="tabelRiwayat"></tbody>
+    </table>
+
+    <script>
+        let dataBarang = JSON.parse(localStorage.getItem('inventaris_barang')) || [];
+        let riwayatMutasi = JSON.parse(localStorage.getItem('inventaris_riwayat')) || [];
+
+        function render() {
+            // Render Tabel Barang
+            const tbody = document.getElementById('tabelBarang');
+            const select = document.getElementById('selectBarang');
+            tbody.innerHTML = '';
+            select.innerHTML = '<option value="">-- Pilih Barang --</option>';
+
+            dataBarang.forEach((item, index) => {
+                const statusClass = item.jumlah > 0 ? 'status-ada' : 'status-habis';
+                const statusText = item.jumlah > 0 ? 'Tersedia' : 'Habis';
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${item.nama}</td>
+                        <td>${item.jumlah}</td>
+                        <td class="${statusClass}">${statusText}</td>
+                        <td>
+                            <button class="btn-edit" style="width:auto; padding:4px 8px;" onclick="editBarang(${index})">Edit</button>
+                            <button class="btn-danger" style="width:auto; padding:4px 8px;" onclick="hapusBarang(${index})">Hapus</button>
+                        </td>
+                    </tr>
+                `;
+
+                select.innerHTML += `<option value="${index}">${item.nama} (Stok: ${item.jumlah})</option>`;
+            });
+
+            // Render Tabel Riwayat
+            const tbodyRiwayat = document.getElementById('tabelRiwayat');
+            tbodyRiwayat.innerHTML = '';
+            riwayatMutasi.slice().reverse().forEach(log => {
+                tbodyRiwayat.innerHTML += `
+                    <tr>
+                        <td>${log.waktu}</td>
+                        <td>${log.nama}</td>
+                        <td><b>${log.tipe.toUpperCase()}</b></td>
+                        <td>${log.jumlah}</td>
+                    </tr>
+                `;
+            });
+
+            // Simpan ke LocalStorage
+            localStorage.setItem('inventaris_barang', JSON.stringify(dataBarang));
+            localStorage.setItem('inventaris_riwayat', JSON.stringify(riwayatMutasi));
+        }
+
+        function simpanBarang() {
+            const nama = document.getElementById('namaBarang').value.trim();
+            const jumlahInput = document.getElementById('jumlahBarang').value.trim();
+            const editIndex = parseInt(document.getElementById('editIndex').value);
+
+            // Validasi Input
+            if (nama === '' || jumlahInput === '') {
+                alert('Nama dan Jumlah Barang tidak boleh kosong!');
+                return;
+            }
+            const jumlah = parseInt(jumlahInput);
+            if (isNaN(jumlah) || jumlah < 0) {
+                alert('Jumlah Barang harus berupa angka minimal 0!');
+                return;
+            }
+
+            if (editIndex === -1) {
+                // Tambah Barang Baru
+                dataBarang.push({ nama, jumlah });
+                catatRiwayat(nama, 'masuk (awal)', jumlah);
+            } else {
+                // Edit Barang Existing
+                dataBarang[editIndex].nama = nama;
+                dataBarang[editIndex].jumlah = jumlah;
+            }
+
+            resetForm();
+            render();
+        }
+
+        function editBarang(index) {
+            document.getElementById('namaBarang').value = dataBarang[index].nama;
+            document.getElementById('jumlahBarang').value = dataBarang[index].jumlah;
+            document.getElementById('editIndex').value = index;
+            document.getElementById('formTitle').innerText = 'Edit Barang';
+            document.getElementById('btnSimpan').innerText = 'Update Barang';
+            document.getElementById('btnBatal').style.display = 'block';
+        }
+
+        function hapusBarang(index) {
+            if (confirm(`Yakin ingin menghapus ${dataBarang[index].nama}?`)) {
+                catatRiwayat(dataBarang[index].nama, 'dihapus', dataBarang[index].jumlah);
+                dataBarang.splice(index, 1);
+                resetForm();
+                render();
+            }
+        }
+
+        function prosesMutasi() {
+            const indexSelect = document.getElementById('selectBarang').value;
+            const jenis = document.getElementById('jenisMutasi').value;
+            const jumlahInput = document.getElementById('jumlahMutasi').value.trim();
+
+            // Validasi Mutasi
+            if (indexSelect === '') {
+                alert('Pilih barang terlebih dahulu!');
+                return;
+            }
+            const jumlah = parseInt(jumlahInput);
+            if (isNaN(jumlah) || jumlah <= 0) {
+                alert('Jumlah mutasi harus angka lebih dari 0!');
+                return;
+            }
+
+            const item = dataBarang[indexSelect];
+
+            if (jenis === 'keluar' && jumlah > item.jumlah) {
+                alert(`Stok tidak mencukupi! Stok saat ini: ${item.jumlah}`);
+                return;
+            }
+
+            if (jenis === 'masuk') {
+                item.jumlah += jumlah;
+            } else {
+                item.jumlah -= jumlah;
+            }
+
+            catatRiwayat(item.nama, jenis, jumlah);
+            document.getElementById('jumlahMutasi').value = '';
+            render();
+        }
+
+        function catatRiwayat(nama, tipe, jumlah) {
+            const waktu = new Date().toLocaleString('id-ID');
+            riwayatMutasi.push({ waktu, nama, tipe, jumlah });
+        }
+
+        function resetForm() {
+            document.getElementById('namaBarang').value = '';
+            document.getElementById('jumlahBarang').value = '';
+            document.getElementById('editIndex').value = -1;
+            document.getElementById('formTitle').innerText = 'Tambah / Edit Barang';
+            document.getElementById('btnSimpan').innerText = 'Simpan Barang';
+            document.getElementById('btnBatal').style.display = 'none';
+        }
+
+        // Jalankan saat pertama kali halaman dimuat
+        render();
+    </script>
+</body>
+
+</html>

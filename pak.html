@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Paket Wisata Cibulan</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+        td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulir Paket Wisata Cibulan</h1>
+
+    <p>Kolom beranda * wajib diisi. Formulir ini merupakan cobtoh frontend dan belum mengirimkan data ke server.</p>
+
+    <fieldset>
+        <legend>01. Informasi Pemesanan</legend>
+        <form>
+            <table border="1">
+                <tr>
+                    <td>Nama Lengkap  *</td>
+                    <td><input type="text" placeholder="Nama sesuai identitas"></td>
+                </tr>
+                <tr>
+                    <td>Alama email *</td>
+                    <td><input type="email" placeholder="nama@email.com"></td>
+                </tr>
+                <tr>
+                    <td>Nomor telepon / WhatsApp *</td>
+                    <td><input type="number" placeholder="08xxxxxxxxxx"><br><br>Gunakan nomor telepon yang aktif.</td>
+                </tr>
+                <tr>
+                    <td>Instansi / komunitas</td>
+                    <td><input type="text" placeholder="Optional"></td>
+                </tr>
+                <tr>
+                    <td>Jenis pemesanan</td>
+                    <td><select>
+                        <option>Pilih jenis pemesanan</option>
+                        <option>Perorangan</option>
+                        <option>Keluarga</option>
+                        <option>Sekolah / kampus</option>
+                        <option>Komunitas</option>
+                        <option>Perusahaan / instansi</option>
+                        <option>Agen perjalanan</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Kota asal</td>
+                    <td><input type="text" placeholder="Contoh: Cirebon"></td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>02. Pilih Paket Wisata</legend>
+        <form>
+            <table border="1">
+                <tr>
+                    <td>Jenis paket *</td>
+                    <td>
+                        <input type="radio">Wisata Singkat<br><br>Kunjungan beberapa jam.<br><br>
+                        <input type="radio">Wisata Sehari<br><br>Rencana aktivitas satu hari.<br><br>
+                        <input type="radio">Edukasi / Rombongan<br><br>Untuk sekolah, komunitas, atau instansi.<br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Destinasi / aktivitas utama</td>
+                    <td>
+                        <select>
+                            <option>Pilih destinasi atau aktivitas</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jumlah peserta *</td>
+                    <td><input type="number"><br><br>Masukan perkiraan jumlah orang</td>
+                </tr>
+                <tr>
+                    <td>Tanggal kunjungan *</td>
+                    <td><input type="date"></td>
+                </tr>
+                <tr>
+                    <td>Perkiraan waktu tiba</td>
+                    <td><input type="time"></td>
+                </tr>
+                <tr>
+                    <td>Tanggal alternatif</td>
+                    <td><input type="date"></td>
+                </tr>
+                <tr>
+                    <td>Durasi kunjungan</td>
+                    <td>
+                        <select>
+                            <option>Beberapa jam</option>
+                            <option>1 hari</option>
+                            <option>2 hari</option>
+                            <option>lebih dari 2 hari</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>03. Kebutuhan dan Preferensi</legend>
+        <form>
+            <table border="1">
+                <tr>
+                    <td>Layanan yang dibutuhkan</td>
+                    <td>
+                        <input type="checkbox"> Pemandu wisata <br>
+                        <input type="checkbox"> Kegiatan edukasi <br>
+                        <input type="checkbox"> Konsumsi <br>
+                        <input type="checkbox"> Dokumentasi <br>
+                        <input type="checkbox"> Transportasi lokal <br>
+                        <input type="checkbox"> Kunjungan UMKM <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Transportasi yang digunakan</td>
+                    <td>
+                        <select>
+                            <option>Pilih transportasi</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Perkiraan anggaran per orang</td>
+                    <td>
+                        <select>
+                            <option>Pilih rentan anggaran</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Preferensi aktivitass</td>
+                    <td>Santai(1) sampai Aktif(5)<br><br><input type="range" min="1" max="5"> 3/5</td>
+                </tr>
+                <tr>
+                    <td>Warna pilihan kelompok</td>
+                    <td><input type="color"></td>
+                </tr>
+                <tr>
+                    <td>Bahasa layanan</td>
+                    <td>
+                        <select>
+                            <option>Bahasa Indonesia</option>
+                            <option>Bahasa Inggris</option>
+                            <option>Lainnya / diskusi</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>04. Informasi Tambahan</legend>
+        <form>
+            <table border="1">
+                <tr>
+                    <td>Kebutuhan khusus/ catatan</td>
+                    <td><textarea cols="40" rows="5" placeholder="Contoh: kebutuhan aksesbilitas, peseta anak-aak, agenda khusus, atau permintaan lainnya." ></textarea></td>
+                </tr>
+                <tr>
+                    <td>Lampiran (opsional)</td>
+                    <td><input type="file"><br><br>Contoh: surat kunjungan atau rundown kegiatan.<br><br>Batas ukuran file perlu ditenrukan saat integrasi server.</bt></td>
+                </tr>
+                <tr>
+                    <td>Sumber informasi tentang Cibulan</td>
+                    <td>
+                        <select>
+                            <option>Pilih sumber informasi</option>
+                            <option>Media sosial</option>
+                            <option>Mesin pencari / internet</option>
+                            <option>Teman atau keluarga</option>
+                            <option>Sekolah / instansi</option>
+                            <option>Pameran atau acara wisata</option>
+                            <option>Lainnya</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kode refrensi / nomor surat</td>
+                    <td><input type="text" placeholder="Masukan jika ada"></td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>05.Persetujuan dan Konfirmasi</legend>
+        <form>
+            <table border="1">
+                <tr>
+                    <td>Cara dihubungi</td>
+                    <td>
+                        <select>
+                            <option>WhatsApp</option>
+                            <option>Telepon</option>
+                            <option>Email</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kode promo (jika ada)</td>
+                    <td><input type="text" placeholder="Contoh: CIBULAN2026"></td>
+                </tr>
+                <tr>
+                    <td>Persetujuan pengguna data *</td>
+                    <td><input type="checkbox"> Saya menyetujui data ini digunakan untuk menindaklanjuti permintaan kunjungan.</td>
+                </tr>
+                <tr>
+                    <td>Informasi promosi</td>
+                    <td><input type="checkbox"> Saya bersedia menerima informasi agenda atau promosi wisata berikutnya.</td>
+                </tr>
+            </table>
+        </form>
+    </fieldset>
+    <br>
+    <button>Kirim Permintaan Wisata</button>
+    <button>Kosongkan Formulir</button>
+    <button>Pratinjau Ringkasan</button>
+</body>
+</html>
