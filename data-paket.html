@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Data pemesanan paket wisata Desa Wisata Cibulan.">
+    <title>Data Paket Wisata | Cibulan</title>
+    <link rel="stylesheet" href="css/paket.css">
+    <script src="js/data-paket.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">✦</span>
+            <span>
+                <strong>CIBULAN</strong>
+                <small>DESA WISATA</small>
+            </span>
+        </a>
+
+        <nav class="navigation">
+            <a href="index.html">Beranda</a>
+            <a href="index.html#destinasi">Destinasi</a>
+            <a href="paket.html">Paket Wisata</a>
+            <a href="data-paket.html" class="active">Data Paket Wisata</a>
+        </nav>
+
+    </header>
+
+    <!-- MAIN -->
+    <main class="data-container">
+
+        <div class="data-heading">
+            <span class="eyebrow">PENGELOLAAN PEMESANAN</span>
+            <h1>Data Paket Wisata</h1>
+            <p>Daftar permintaan kunjungan Desa Wisata Cibulan.</p>
+        </div>
+
+        <!-- STATISTIK -->
+        <section class="statistics">
+
+            <div class="stat-card">
+                <span>Total permintaan</span>
+                <strong id="totalOrders">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>Jumlah seluruh peserta</span>
+                <strong id="totalParticipants">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>Paket paling sering dipilih</span>
+                <strong id="popularPackage">Belum ada data</strong>
+            </div>
+
+        </section>
+
+        <!-- PENCARIAN -->
+        <section class="toolbar">
+
+            <input type="search" id="searchInput" placeholder="Cari nama, email, paket, atau tanggal..."
+                aria-label="Cari data pemesanan">
+
+            <div class="toolbar-buttons">
+
+                <button type="button" id="reloadButton" class="btn-light">
+                    Muat ulang data
+                </button>
+
+                <button type="button" id="deleteAllButton" class="btn-danger">
+                    Hapus semua data
+                </button>
+
+            </div>
+
+        </section>
+
+        <p id="dataStatus" class="data-status" role="status" aria-live="polite">
+            Memuat data...
+        </p>
+
+        <!-- TABEL DATA -->
+        <section class="table-card">
+
+            <div class="table-heading">
+                <h2>Daftar permintaan</h2>
+                <span>Data tersimpan di browser ini</span>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Pemesan</th>
+                            <th>Paket wisata</th>
+                            <th>Tanggal kunjungan</th>
+                            <th>Peserta</th>
+                            <th>Kontak</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="orderTableBody">
+                        <tr>
+                            <td colspan="7" class="empty-data">
+                                Belum ada data pemesanan.
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <a href="paket.html" class="back-link">
+            ← Kembali ke formulir paket wisata
+        </a>
+
+    </main>
+
+    <!-- POPUP DETAIL -->
+    <div class="modal" id="detailModal" aria-hidden="true">
+
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+            <div class="modal-heading">
+
+                <h2 id="modalTitle">Detail permintaan</h2>
+
+                <button type="button" id="closeModal" class="close-button">
+                    Tutup
+                </button>
+
+            </div>
+
+            <div id="detailContent" class="detail-grid"></div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <span>© 2026 Sistem Informasi Desa Wisata Cibulan</span>
+        <span>Halaman Data Paket Wisata</span>
+    </footer>
+
+</body>
+
+</html>
